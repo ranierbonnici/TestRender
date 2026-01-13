@@ -12,7 +12,8 @@ RUN dotnet publish -c Release -o out
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 
-ENV ASPNETCORE_URLS=http://0.0.0.0:8080
+# Set default port (can be overridden by Render)
+ENV PORT=8080
 EXPOSE 8080
 
 COPY --from=build /app/out .
