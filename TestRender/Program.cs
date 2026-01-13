@@ -6,13 +6,10 @@ namespace TestRender
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-            builder.Services.AddControllersWithViews();
-
-            builder.WebHost.UseUrls("http://0.0.0.0:" +
-                (Environment.GetEnvironmentVariable("PORT") ?? "8080"));
-
             var app = builder.Build();
+
+            var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+            app.Urls.Add($"http://0.0.0.0:{port}");
 
             app.MapGet("/", () => "Hello from Render!");
 
