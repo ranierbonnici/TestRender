@@ -5,6 +5,8 @@ namespace TestRender
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddControllersWithViews();
+            builder.Services.AddAuthorization();
             var app = builder.Build();
 
             // Use Render-provided port
